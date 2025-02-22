@@ -1,0 +1,301 @@
+# Transfer body for first step
+
+
+
+
+
+# 1
+
+
+
+
+
+
+#抬头，左倾
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, 0.33, 0.0, -0.05, 0.05, 0.0] #旋转、移动
+foot_pose    = [0.0, 0.0, 0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+# fr
+
+#抬右前腿
+
+[[step]]
+type         = "pose"
+foot_support = [-1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.0, 0.0, 0.18]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#伸右前腿
+
+[[step]]
+type         = "pose"
+foot_support = [-1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.15, 0.0, 0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#落右前腿
+
+[[step]]
+type         = "pose"
+foot_support = [-1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.1, 0.0, -0.1]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+# Transfer body for secend step
+
+#四足支撑，右倾
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.1, -0.1, 0.00]
+foot_pose    = [0.0, 0.0, -0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 1200
+
+#fl
+
+#抬左前腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, -1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.0, 0.0, 0.18]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#伸左前腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, -1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.15, 0.0, 0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#落左前腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, -1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.1, 0.0, -0.1]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+# Transfer body for third step
+
+
+#四足支撑，左倾、跟进身体
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.1, 0.0, 0.1, 0.1, 0.0]
+foot_pose    = [0.0, 0.0, -0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 1200
+
+#rr
+
+#抬右后腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, -1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.0, 0.0, 0.1]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#伸右后腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, -1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.15, 0.0, -0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#落右后腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, -1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.1, 0.0, -0.15]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+
+# Transfer body for last
+
+#四足支撑
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, 0.0, 0.0, 0.15, -0.1, 0.0]
+foot_pose    = [0.0, 0.0, -0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 1200
+
+#rl
+
+#抬左后腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, -1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.0, 0.0, 0.1]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#伸左后腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, -1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.15, 0.0, -0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#落左后腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, -1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.1, 0.0, -0.15]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+#finish
+
+#四足支撑
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, 0.1, -0.0, -0.1, 0.1, 0.0]
+foot_pose    = [0.0, 0.0, -0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 1200
+
+
+
+
+# 2
+
+
+
+
+
+
+
+# fr
+
+#抬右前腿
+
+[[step]]
+type         = "pose"
+foot_support = [-1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.0, 0.0, 0.1]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#伸右前腿
+
+[[step]]
+type         = "pose"
+foot_support = [-1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.1, 0.0, 0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#落右前腿
+
+[[step]]
+type         = "pose"
+foot_support = [-1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.05, 0.0, -0.1]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+# Transfer body for secend step
+
+#四足支撑，右倾
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.1, -0.1, 0.00]
+foot_pose    = [0.0, 0.0, -0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 1200
+
+#fl
+
+#抬左前腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, -1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.0, 0.0, 0.1]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#伸左前腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, -1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.1, 0.0, 0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+#落左前腿
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, -1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.0, 0.0, 0.0, 0.0, 0.0]
+foot_pose    = [0.05, 0.0, -0.1]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 600
+
+# Transfer body for third step
+
+
+#四足支撑，左倾、跟进身体
+
+[[step]]
+type         = "pose"
+foot_support = [1.0, 1.0, 1.0, 1.0]
+body_cmd     = [0.0, -0.2, 0.0, 0.35, 0.05, 0.0]
+foot_pose    = [0.0, 0.0, -0.0]
+ctrl_point   = [0.0, 0.0, 0.0]
+duration     = 1200
+
+
+
