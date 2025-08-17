@@ -6,6 +6,7 @@
 
 ### 更新运控
 - 更新代码包
+MotionControl目录中解除限制,编译后的源码
 1. 拷贝 cyberdog_locomotion.tar 到NX上
 2. tar -xvf *.tar
 
