@@ -228,7 +228,7 @@ def main():
         act(0)
         # time.sleep(1)
         
-        #石子路和减速带
+#石子路和减速带
         if user_input<1:  
             print('石子路和减速带')
             #朝前
@@ -271,13 +271,13 @@ def main():
             #前进至圆柱前0.2m
             while scan_node.get_scan()[1] > 0.20:
                 robot_ctrl.update_and_publish(7)
-            
+
             #旋转
             while abs((y_xyz_node.y+fix+360)%360-270) > 3:
                 robot_ctrl.update_and_publish(20)
 
             #后退
-            
+
             act(38)
 
             #前进至圆柱前0.2m
@@ -298,7 +298,7 @@ def main():
 
 
             print('出圆柱结束')
-
+# 高台
         if user_input<3:
             print('开始高台，找到起始位置')
             print('居中对齐')
@@ -318,22 +318,24 @@ def main():
             print('高台准备结束')
             act(0)
             gaotai()
+# 第一个直角弯
         if user_input<4:
             # 第一个直角弯
             print('第一个直角弯')
             #角度补偿
             for _ in range(5):
                 fix = robot_ctrl.rpy_fix_right(scan_node,y_xyz_node,0)
-  
+
 
             #行走至离墙面0.4m
             while scan_node.get_scan()[1] > 0.4:
                 robot_ctrl.update_and_publish(7)  
-            
+
             #3.左转到90度位置
             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,90):
                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
                 continue
+# 上斜坡
         if user_input<4:
 
             #朝前
@@ -363,11 +365,13 @@ def main():
             #行走至离墙面0.4m
             while scan_node.get_scan()[1] > 0.4:
                 robot_ctrl.update_and_publish(7)  
+# 第二个直角转弯
         if user_input<5:
             #第二个直角转弯
             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,180):
                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
                 continue
+# 楼梯前准备
         if user_input<6:
 
             #朝前
@@ -381,17 +385,19 @@ def main():
                # 剧中对齐
             while robot_ctrl.align(scan_node.get_scan()):
                 continue  
+# 上楼梯
         if user_input<7:
 
             print('开始楼梯')
             louti()
 
             # 上台阶
-
+# 过独木桥
         if user_input<8:
 # 独木桥
             # act(0)
             process_bridge(head_tof_node=head_tof_node)
+# 下台阶和石板路
         if user_input<9:
             # 下台阶和石板路
             print('下台阶和石板路')
@@ -409,9 +415,6 @@ def main():
             #朝前
             print('朝前')
 
-
-
-
             # 正式代码，从独木桥结束，朝前为180
             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,180):
                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
@@ -422,10 +425,7 @@ def main():
             while y_xyz_node.xyz[0]/fix_cos - xyz[0]/fix_cos > -2.7:
                 # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
                 robot_ctrl.update_and_publish(42)
-
-            
-
-    
+# 第三个直角弯
         if user_input<10:
             #第三个直角弯
             #行走至离墙面0.4m
@@ -439,9 +439,6 @@ def main():
                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
                 continue
 
-            
-
-
             print('前进并判断是否能剧中')
             while robot_ctrl.align2(scan_node.get_scan()):
                 robot_ctrl.update_and_publish(7)
@@ -454,6 +451,7 @@ def main():
             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,270):
                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
                 continue
+#通过幕布
         if user_input<11:
             #幕布
             print('通过第一块幕布')
@@ -499,696 +497,6 @@ def main():
                 continue
             while True:
                 act(0)
-        # if user_input<100:
-        #     gaotai()
-        #     while True:
-        #             act(0)
-#         #沙地
-#         if user_input<2:
-#             #根据雷达判断进入第一阶段赛段
-#             while robot_ctrl.align2(scan_node.get_scan()):
-#                 robot_ctrl.update_and_publish(7)
-#             #前进30cm进入赛道
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos < 0.2:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-
-#             #朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,90):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-
-#             #居中对齐
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-#             #前进1.5m通过沙地
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos < 1.4:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-
-
-
-
-
-            
-#         #上斜坡
-#         if user_input<4:
-#             #上0.3m对齐
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos < 0.3:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-
-#             #在斜坡上朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,90):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-#             #居中
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-#             #6前进，根据腿式里程计判断，前进1.4米到斜坡顶端
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos < 1.3:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-
-            
-            
-#         #斜坡顶端
-#         if user_input<5:
-#             #朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,90):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-
-#             #9.前进，根据腿式里程计判断，前进0.4米到边缘
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos < 0.4:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-
-            
-#         #下斜坡   
-#         if user_input<6:
-#             #下1.4m对齐
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos < 1.35:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-
-#             #rpy超前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,90):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-
-#             #居中
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-#             #11.前进，根据腿式里程计判断，前进2米到直角转弯
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos < 1.2:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-
-#             #rpy超前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,90):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-
-            
-
-#         #直角转弯2
-#         if user_input<7:
-#             #行走至离墙面0.2m
-#             while scan_node.get_scan()[1] > 0.4:
-#                 robot_ctrl.update_and_publish(7)
-
-            
-
-#             #转弯
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,180):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-            
-#     #进入第二段
-#         #减速带
-#         if user_input<8:
-
-#             #根据雷达前进至第二赛道
-#             while robot_ctrl.align2(scan_node.get_scan()):
-#                 robot_ctrl.update_and_publish(7)
-
-#             act(23)
-
-#             #角度补偿
-#             for _ in range(3):
-#                 fix=robot_ctrl.rpy_fix_right(scan_node,y_xyz_node,180)
-#             fix_cos=math.cos(fix/180*math.pi)
-
-#             #朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,180):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-
-#             #居中
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-#             #前进2.8通过减速带
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[0]/fix_cos - xyz[0]/fix_cos > -2.3:
-#                 # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                 robot_ctrl.update_and_publish(19)
-
-            
-# #圆柱
-#         if user_input<9:
-            
-#             #朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,180):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-#             #居中
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-#             #前进至圆柱前0.2m
-#             while scan_node.get_scan()[1] > 0.20:
-#                 robot_ctrl.update_and_publish(7)
-            
-#             #旋转
-#             while abs((y_xyz_node.y+fix+360)%360-90) > 3:
-#                 robot_ctrl.update_and_publish(20)
-
-#             #后退
-            
-#             act(38)
-
-#             #前进至圆柱前0.2m
-#             while scan_node.get_scan()[0] > 0.3:
-#                 robot_ctrl.update_and_publish(5)
-
-#             #绕圆台
-#             while abs((y_xyz_node.y+fix+360)%360-230) > 3:
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 robot_ctrl.update_and_publish(21)
-
-#             #出圆柱
-#             act(26)
-            
-            
-#         #高台
-#         if user_input<10:
-#             #朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,180):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-
-#             #居中
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-#             #高台对齐
-#             while scan_node.get_scan()[1]>0.70:
-#                 # print(scan_node.get_scan()[1])
-#                 robot_ctrl.update_and_publish(39)
-            
-#             #站立
-#             act(0)
-
-#             #爬高台
-#             act(22)
-
-#             #趴下
-#             act(24)
-
-#             #站立
-#             act(0)
-
-#             #角度补偿
-#             for _ in range(3):
-#                 fix=robot_ctrl.rpy_fix_left(scan_node,y_xyz_node,180)
-#             fix_cos=math.cos(fix/180*math.pi)
-
-#             #朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,180):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-                
-#             #居中
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-#             #高台对齐
-#             while scan_node.get_scan()[1]>2.92:
-#                 # print(scan_node.get_scan()[1])
-#                 robot_ctrl.update_and_publish(39)
-            
-
-            
-#             #站立
-#             act(0)
-
-
-#             #爬高台
-#             act(22)
-
-
-#             #趴下
-#             act(24)
-
-
-
-#         # #下高台
-
-
-#             #站立
-#             act(0)
-
-#             #前进一小步
-#             act(29)
-
-#             #站立
-#             act(0)
-
-#             #跳跃
-#             act(25)
-
-            
-#             #站立
-#             act(0)
-
-#             #后退
-#             act(40)
-#             #角度补偿
-#             for _ in range(5):
-#                 fix=robot_ctrl.rpy_fix_right(scan_node,y_xyz_node,180)
-#             fix_cos=math.cos(fix/180*math.pi)
-
-#             #朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,180):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-#             #居中
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-
-#             #高台对齐
-#             while scan_node.get_scan()[1]>1.50:
-#                 # print(scan_node.get_scan()[1])
-#                 robot_ctrl.update_and_publish(39)
-
-
-#             #站立
-#             act(0)
-
-
-#             #跳跃
-#             act(25)
-
-
-#             #站立
-#             act(0)
-
-            
-#         #直角转弯3
-#         if user_input<11:
-#             for _ in range(5):
-#                 fix = robot_ctrl.rpy_fix_right(scan_node,y_xyz_node,180)
-#             fix_cos=math.cos(fix/180*math.pi)
-
-#             #行走至离墙面0.4m
-#             while scan_node.get_scan()[1] > 0.4:
-#                 robot_ctrl.update_and_publish(7)
-
-
-#             #转弯
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,270):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-           
-#         #上楼梯
-#         if user_input<12:
-#             while robot_ctrl.align2(scan_node.get_scan()):
-#                 robot_ctrl.update_and_publish(7)
-#             #楼梯对齐
-#             act(36)
-
-#             while robot_ctrl.align_louti(scan_node.get_scan()):
-#                 continue
-
-#             #楼梯对齐
-#             while scan_node.get_scan()[1]>0.76:
-#                 # print(scan_node.get_scan()[1])
-#                 robot_ctrl.update_and_publish(39)
-
-#             #站立
-#             act(0)
-
-#             #为独木桥开启tof
-#             head_tof_node=HeadTofSubscriber()
-#             executor.add_node(head_tof_node)
-
-#             #自定义上楼梯
-#             act(31)
-
-            
-#             #站立
-#             act(0)
-
-            
-#         #过独木桥
-#         if user_input<13:
-#             count = 0
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos > -2.2:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 if count == 2:
-#                     act(33)
-
-#                     count=0
-#                 if count == -2:
-#                     act(32)
-#                     count=0
-#                 temp = head_tof_node.tof_dumuqiao()
-#                 if temp == 1:
-#                     count+=1
-#                     robot_ctrl.update_and_publish(6)
-#                 elif temp == -1:
-#                     count-=1
-#                     robot_ctrl.update_and_publish(5)
-#                 else:
-#                     robot_ctrl.update_and_publish(7)
-#             #关闭tof
-#             executor.remove_node(head_tof_node)
-#             try:
-#                 head_tof_node.destroy_node()
-#             except:
-#                 print("head_tof_node has been destroyed")
-
-#         #下楼梯
-        
-#         if user_input<14:
-#             while robot_ctrl.align2(scan_node.get_scan()):
-#                 robot_ctrl.update_and_publish(34)
-            
-#             act(41)
-
-
-#         #石板路
-#         if user_input<15:
-#             # 角度补偿
-#             for _ in range(5):
-#                 fix = robot_ctrl.rpy_fix_right(scan_node,y_xyz_node,270)
-#             fix_cos=math.cos(fix/180*math.pi)
-
-#             #朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,270):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-#             #居中
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos > -1.5:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 robot_ctrl.update_and_publish(35)
-
-#             #转弯
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,270):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-
-#             #居中
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos > -1.3:
-#                 # print(f"移动中：{y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos}")
-#                 robot_ctrl.update_and_publish(35)
-
-#         #直角转弯4
-#         if user_input<16:
-#             #行走至离墙面0.2m
-#             while scan_node.get_scan()[1] > 0.4:
-#                 robot_ctrl.update_and_publish(35)
-
-
-#             #转弯
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,0):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-
-#     #进入第四段
-#         #颜色识别，如果是偏向一边，可不可以，如果居中，可不可以。
-#         if user_input<17:
-#             #走到最后一段
-#             while robot_ctrl.align2(scan_node.get_scan()):
-#                 robot_ctrl.update_and_publish(14)
-#             #角度补偿，很关键
-#             for _ in range(8):
-#                 fix=robot_ctrl.rpy_fix_right(scan_node,y_xyz_node,0)
-#             fix_cos=math.cos(fix/180*math.pi)
-            
-
-#             #根据腿式里程计前进50cm
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos<0.7:
-#                 # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-#             #rpy朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,0):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-#             #居中对齐
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-#             #开启realsense
-#             camera_thread = threading.Thread(target=start_camera)
-#             camera_thread.start()
-#             start_time = time.time()
-#             while time.time() - start_time < 25:
-#                 robot_ctrl.update_and_publish(0)
-
-
-#         #第一块布
-#             # 创建并启动子进程
-#             thread1=threading.Thread(target=activate_camera)
-#             thread1.start()
-#             image_node1=ImageSubscriber()
-#             executor.add_node(image_node1)
-#             while image_node1.image is None:
-#                 robot_ctrl.update_and_publish(0)
-#             thread11=threading.Thread(target=deactivate_camera)
-#             thread11.start()
-#             executor.remove_node(image_node1)
-#             flag=image_data_func(image_node1.image)
-#             try:
-#                 image_node1.destroy_node()
-#             except:
-#                 print("已清除image_node1")
-#             if flag:   #左移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos<0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(5)
-#             else:               #右移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos>-0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(6)
-
-#             #前进1m
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos<0.88:
-#                 # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-            
-#             # 角度补偿
-#             if flag:
-#                 for _ in range(5):
-#                     fix = robot_ctrl.rpy_fix_left(scan_node,y_xyz_node,0)
-#                 fix_cos=math.cos(fix/180*math.pi)
-#             else:
-#                 for _ in range(5):
-#                     fix = robot_ctrl.rpy_fix_right(scan_node,y_xyz_node,0)
-#                 fix_cos=math.cos(fix/180*math.pi)
-
-#             #rpy朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,0):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-#             # 居中对齐
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-
-
-#         #第二块布
-#             thread2=threading.Thread(target=activate_camera)
-#             thread2.start()
-#             image_node2=ImageSubscriber()
-#             executor.add_node(image_node2)
-#             while image_node2.image is None:
-#                 robot_ctrl.update_and_publish(0)
-#             thread22=threading.Thread(target=deactivate_camera)
-#             thread22.start()
-#             executor.remove_node(image_node2)
-#             flag=image_data_func(image_node2.image)
-#             try:
-#                 image_node2.destroy_node()
-#             except:
-#                 print("已清除image_node1")
-#             if flag:   #左移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos<0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(5)
-#             else:               #右移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos>-0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(6)
-
-#             #前进1m
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos<0.88:
-#                 # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-#             #rpy朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,0):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-#             #居中对齐
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-
-
-
-#         #第三块布
-#             thread3=threading.Thread(target=activate_camera)
-#             thread3.start()
-#             image_node3=ImageSubscriber()
-#             executor.add_node(image_node3)
-#             while image_node3.image is None:
-#                 robot_ctrl.update_and_publish(0)
-#             thread33=threading.Thread(target=deactivate_camera)
-#             thread33.start()
-#             executor.remove_node(image_node3)
-#             flag=image_data_func(image_node3.image)
-#             try:
-#                 image_node3.destroy_node()
-#             except:
-#                 print("已清除image_node1")
-#             if flag:   #左移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos<0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(5)
-#             else:               #右移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos>-0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(6)
-
-#             #前进1m
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos<0.88:
-#                 # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-#             #rpy朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,0):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-#             #居中对齐
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-
-
-
-#         #第四块布
-#             thread4=threading.Thread(target=activate_camera)
-#             thread4.start()
-#             image_node4=ImageSubscriber()
-#             executor.add_node(image_node4)
-#             while image_node4.image is None:
-#                 robot_ctrl.update_and_publish(0)
-#             thread44=threading.Thread(target=deactivate_camera)
-#             thread44.start()
-#             executor.remove_node(image_node4)
-#             flag=image_data_func(image_node4.image)
-#             try:
-#                 image_node4.destroy_node()
-#             except:
-#                 print("已清除image_node1")
-#             if flag:   #左移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos<0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(5)
-#             else:               #右移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos>-0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(6)
-
-#             #前进1m
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos<0.88:
-#                 # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-#             #rpy朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,0):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-#             #居中对齐
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-
-
-#         #第五块布
-#             thread5=threading.Thread(target=activate_camera)
-#             thread5.start()
-#             image_node5=ImageSubscriber()
-#             executor.add_node(image_node5)
-#             while image_node5.image is None:
-#                 robot_ctrl.update_and_publish(0)
-#             thread55=threading.Thread(target=deactivate_camera)
-#             thread55.start()
-#             executor.remove_node(image_node5)
-#             flag=image_data_func(image_node5.image)
-#             try:
-#                 image_node5.destroy_node()
-#             except:
-#                 print("已清除image_node1")
-#             if flag:   #左移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos<0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(5)
-#             else:               #右移40cm
-#                 xyz=y_xyz_node.xyz
-#                 while y_xyz_node.xyz[1]/fix_cos-xyz[1]/fix_cos>-0.27:
-#                     # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                     robot_ctrl.update_and_publish(6)
-
-#             #前进1m
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos<1:
-#                 # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-#             #rpy朝前
-#             while robot_ctrl.turn_left_or_right((y_xyz_node.y+fix+360)%360,0):
-#                 # print(f"转弯中：{(y_xyz_node.y+fix+360)%360}")
-#                 continue
-            
-#             #居中对齐
-#             while robot_ctrl.align(scan_node.get_scan()):
-#                 continue
-#             # stop_camera()
-#             xyz=y_xyz_node.xyz
-#             while y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos<1:
-#                 # print(f"移动中：{y_xyz_node.xyz[0]/fix_cos-xyz[0]/fix_cos}")
-#                 robot_ctrl.update_and_publish(7)
-#             while True:
-#                 robot_ctrl.update_and_publish(0)
-            
-
-
-            
-
-
-
-
 
     except KeyboardInterrupt:
         robot_ctrl.update_and_publish("0")
