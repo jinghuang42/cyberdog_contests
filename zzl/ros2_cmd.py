@@ -6,7 +6,7 @@ class MotionStatusPublisher(Node):
 
     def __init__(self):
         super().__init__('motion_status_publisher')
-        self.publisher_ = self.create_publisher(MotionServoCmd, '/mi_desktop_48_b0_2d_7b_02_dc/motion_servo_cmd', 10)
+        self.publisher_ = self.create_publisher(MotionServoCmd, '/mi_desktop_48_b0_2d_5f_b8_ce/motion_servo_cmd', 10)
         timer_period = 1.0  # 每2秒发布一次
         self.timer = self.create_timer(timer_period, self.timer_callback)
 

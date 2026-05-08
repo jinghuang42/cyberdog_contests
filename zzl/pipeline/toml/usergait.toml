@@ -352,7 +352,7 @@ mode = 11
 gait_id = 27
 contact = 15
 life_count = 0 #Fake value
-vel_des = [ 0.18, 0.0, 0.38,]     
+vel_des = [ 0.20, 0.0, 0.45,]    
 rpy_des = [ 0.0, 0.0, 0.0,]     #俯仰角度，横滚角度，扭动角度
 pos_des = [ 0.0, 0.0, 0.0,]
 acc_des = [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,]
@@ -378,7 +378,9 @@ ctrl_point = [ 0.0, 0.0, 0.0,]
 foot_pose = [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,]
 step_height = [ 0.0, 0.0,]
 value = 2
-duration = 5000
+duration = 0 
+
+
 
 #高台前对齐
 #23
@@ -414,6 +416,7 @@ foot_pose = [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,]
 step_height = [ 0.0, 0.0,]
 value = 0
 duration = 4000
+
 
 #25
 #跳下高台

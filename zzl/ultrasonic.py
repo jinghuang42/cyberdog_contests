@@ -8,7 +8,7 @@ class UltrasonicSubscriber(Node):
         super().__init__('ultrasonic_subscriber')
         self.subscription = self.create_subscription(
             Range,
-            '/mi_desktop_48_b0_2d_7b_02_dc/ultrasonic_payload',
+            '/mi_desktop_48_b0_2d_5f_b8_ce/ultrasonic_payload',
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning

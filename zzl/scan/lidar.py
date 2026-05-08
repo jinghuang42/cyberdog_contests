@@ -8,7 +8,7 @@ class LaserScanSubscriber(Node):
         super().__init__('laser_scan_subscriber')
         self.subscription = self.create_subscription(
             LaserScan,
-            '/mi_desktop_48_b0_2d_7b_02_dc/scan',
+            '/mi_desktop_48_b0_2d_5f_b8_ce/scan',
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning

@@ -10,7 +10,7 @@ class HeadTofSubscriber(Node):
         super().__init__('head_tof_subscriber')
         self.subscription = self.create_subscription(
             HeadTofPayload,
-            '/mi_desktop_48_b0_2d_7b_02_dc/head_tof_payload',
+            '/mi_desktop_48_b0_2d_5f_b8_ce/head_tof_payload',
             self.listener_callback,
             10)
         self.left_data_matrix = None

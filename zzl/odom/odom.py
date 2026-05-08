@@ -7,7 +7,7 @@ class OdomSubscriber(Node):
         super().__init__('odom_subscriber')
         self.subscription = self.create_subscription(
             Odometry,
-            '/mi_desktop_48_b0_2d_7b_02_dc/odom_out',
+            '/mi_desktop_48_b0_2d_5f_b8_ce/odom_out',
             self.listener_callback,
             10)
         self.subscription  # 防止未使用的变量警告

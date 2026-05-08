@@ -9,7 +9,7 @@ class RearTofSubscriber(Node):
         # 创建订阅者
         self.subscription = self.create_subscription(
             RearTofPayload,
-            '/mi_desktop_48_b0_2d_7b_02_dc/rear_tof_payload',
+            '/mi_desktop_48_b0_2d_5f_b8_ce/rear_tof_payload',
             self.listener_callback,
             10)
         self.subscription  # 防止未使用变量警告

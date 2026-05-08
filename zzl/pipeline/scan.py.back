@@ -1,0 +1,49 @@
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import LaserScan
+from rclpy.qos import QoSProfile, ReliabilityPolicy
+
+class ROSListener(Node):
+    def __init__(self):
+        super().__init__('ros_listener')
+        self.scan = None
+        
+        # 【关键修改】根据你截图里的 ros2 topic list 确定的正确话题名
+        topic_name = '/mi_desktop_48_b0_2d_5f_b8_ce/scan'
+        
+        # 使用 Best Effort 策略，解决雷达数据丢包导致 WAITING 的问题
+        qos = QoSProfile(depth=10, reliability=ReliabilityPolicy.BEST_EFFORT)
+        
+        self.subscription = self.create_subscription(
+            LaserScan,
+            topic_name,
+            self.listener_callback,
+            qos)
+        self.get_logger().info(f'已启动雷达订阅，话题: {topic_name}')
+
+    def listener_callback(self, msg):
+        # 接收数据
+        self.scan = msg.ranges
+        
+    def get_scan(self):
+        # 【核心保护】如果数据还没到，直接返回 None，不进行任何计算
+        if self.scan is None:
+            return None
+        
+        # 过滤无效数据的辅助函数
+        def get_mean(data_slice):
+            valid = [d for d in data_slice if d > 0.05 and d < 10.0]
+            return sum(valid) / len(valid) if valid else float('inf')
+
+        try:
+            # 这里的索引对应你原始逻辑
+            right_mean = get_mean(self.scan[0:10])
+            right_front_mean = get_mean(self.scan[54:64])
+            front_mean = get_mean(self.scan[len(self.scan) // 2 - 5 : len(self.scan) // 2 + 5])
+            left_front_mean = get_mean(self.scan[-64:-54])
+            left_mean = get_mean(self.scan[-11:-1])
+            
+            return [left_mean, front_mean, right_mean, left_front_mean, right_front_mean]
+        except Exception as e:
+            # 防止数据长度异常导致崩溃
+            return None
